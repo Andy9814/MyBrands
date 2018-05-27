@@ -1,0 +1,11 @@
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\bin\Debug\netcoreapp2.0\MyBrands.deps.json
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\bin\Debug\netcoreapp2.0\MyBrands.runtimeconfig.json
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\bin\Debug\netcoreapp2.0\MyBrands.runtimeconfig.dev.json
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\bin\Debug\netcoreapp2.0\MyBrands.dll
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\bin\Debug\netcoreapp2.0\MyBrands.pdb
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\obj\Debug\netcoreapp2.0\MyBrands.csprojAssemblyReference.cache
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\obj\Debug\netcoreapp2.0\MyBrands.csproj.CoreCompileInputs.cache
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\obj\Debug\netcoreapp2.0\MyBrands.AssemblyInfoInputs.cache
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\obj\Debug\netcoreapp2.0\MyBrands.AssemblyInfo.cs
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\obj\Debug\netcoreapp2.0\MyBrands.dll
+E:\SEM 4\ASP.NETE\Case Study\MyBrands\MyBrands\obj\Debug\netcoreapp2.0\MyBrands.pdb

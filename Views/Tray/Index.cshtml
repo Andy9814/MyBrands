@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<div class="col-sm-3">&nbsp;</div>
+<div class="panel col-sm-6 col-xs-12">
+    <div class="panel-title text-center" style="padding-top:20px;">
+        <h3 style="font-weight:bolder; color:blue;" >CART</h3>
+        <img src="/images/tray.png" style="height:10%;width:10%;padding-bottom:5%;" />
+    </div>
+    <div class="text-center" style="padding-top:10px;">
+        @{
+            Dictionary<int, object> tray = Context.Session.Get<Dictionary<int, Object>>("tray");
+            
+           
+            decimal orderTot = 0.0M;
+            decimal subTot = 0;
+            decimal tax = 0.13M;
+            decimal Extended = 0;
+          
+        }
+        <table class="table table-striped" ">
+            <tr style="font-weight:bolder; color:mediumvioletred;background-color:aqua;">
+                <th class="col-xs-2 text-center">Product Name</th>
+                <th class="col-xs-10 text-center">Qty</th>
+                <th class="col-xs-10 text-center">Cost Price</th>
+                <th class="col-xs-10 text-center">MSRP</th>
+                <th class="col-xs-10 text-center">Ext Price</th>
+
+            </tr>
+            @{
+                if (tray != null)
+                {
+                    foreach (var key in tray.Keys)
+                    {
+                        ProductViewModel item = JsonConvert.DeserializeObject
+                        <ProductViewModel>
+                        (Convert.ToString(tray[key]));
+                        if (item.QtyOnHand > 0)
+                        {
+                            
+                           
+                            Extended += item.CostPrice * item.QtyOnHand ;
+                            subTot += Extended;
+
+            <tr>
+                <td class="col-xs-2 text-center">@item.ProductName</td>
+                <td class="col-xs-2 text-center">@item.QtyOnHand</td>
+                <td class="col-xs-10 text-left">@item.CostPrice</td>
+                <td class="col-xs-10 text-left">@item.MSRP</td>
+                <td class="col-xs-10 text-left" id="Ext">@Extended</td>
+
+
+
+            </tr>
+                        }
+                    }
+
+                    tax = tax * subTot;
+                    orderTot += tax + subTot;
+                }
+            }
+        </table>
+        <hr />
+        <table class="table table-striped">
+            <tr><th colspan="4" class="col-xs-4 text-left" style="font-size:large;font-weight:bold; color:blue;">Cart Totals</th></tr>
+            <tr>
+                <td class="col-xs-2 text-right">Sub-Total</td>
+                <td class="col-xs-4 text-left" id="sub">@subTot</td>
+              
+               
+            </tr>
+            <tr>
+                <td class="col-xs-2 text-right">Tax</td>
+                <td class="col-xs-4 text-left" id="tax">@tax</td>
+              
+               
+            </tr>
+            <tr>
+                <td class="col-xs-2 text-right">Order Total</td>
+                <td class="col-xs-4 text-left" id="orderTot">@orderTot</td>
+               
+
+            </tr>
+        </table>
+        <a href="/Tray/ClearTray" class="btn btn-sm btn-success">Clear Tray</a>
+    </div>
+</div>
