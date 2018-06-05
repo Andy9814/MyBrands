@@ -67,17 +67,16 @@ namespace MyBrands.Controllers
                     ProductViewModel prodVM = new ProductViewModel();
 
                     prodVM.QtyOnHand = 0;
-
+                    prodVM.BrandId = prod.BrandId;
+                    prodVM.BrandName = brandModel.GetName(prod.BrandId);
                     prodVM.Description = prod.Description;
                     prodVM.CostPrice = prod.CostPrice;
-                    prodVM.BrandId = prod.BrandId;
-
-                    prodVM.BrandName = brandModel.GetName(prod.BrandId);
-
+                    prodVM.Id = prod.Id;                   
                     prodVM.GraphicName = prod.GraphicName;
                     prodVM.MSRP = prod.MSRP;
                     prodVM.ProductName = prod.ProductName;
-
+                    prodVM.QtyOnHand = prod.QtyOnHand;
+                    prodVM.QtyOnBackOrder = prod.QtyOnBackOrder;
                     
                     prodVMList.Add(prodVM);
                 }
@@ -112,18 +111,18 @@ namespace MyBrands.Controllers
             String retMsg = "";
             foreach (ProductViewModel item in myProdArray)
             {
-                if (item.Id == brandVm.Id)// change that to .productId
+                if (item.Id == brandVm.ProductId)// change that to .productId
                 {
                     if (brandVm.QtyOnHand > 0) // update only selected item
                     {
                         item.QtyOnHand = brandVm.QtyOnHand;
                         retMsg = brandVm.QtyOnHand + " - item(s) Added!";
-                        tray[item.Id.ToString()] = item;
+                        tray[item.Id] = item;
                     }
                     else
                     {
                         item.QtyOnHand = 0;
-                        tray.Remove(item.Id.ToString());
+                        tray.Remove(item.Id);
                         retMsg = "item(s) Removed!";
                     }
                     brandVm.BrandId = item.BrandId;

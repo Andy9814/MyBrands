@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyBrands.Models;
 using Microsoft.AspNetCore.Http;
+using MyBrands.Utils;
+
 namespace MyBrands.Controllers
 {
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
-            ViewBag.Message = HttpContext.Session.GetString("Message");
+            if (HttpContext.Session.GetString(SessionVars.LoginStatus) == null)
+            {
+                HttpContext.Session.SetString(SessionVars.LoginStatus, "not logged in");
+            }
+            if (HttpContext.Session.GetString(SessionVars.LoginStatus) == "not logged in")
+            {
+                HttpContext.Session.SetString(SessionVars.Message, "most functionality requires you to login!");
+            }
+            ViewBag.Status = HttpContext.Session.GetString(SessionVars.LoginStatus);
+            ViewBag.Message = HttpContext.Session.GetString(SessionVars.Message);
             return View();
         }
 

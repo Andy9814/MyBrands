@@ -12,12 +12,13 @@ namespace MyBrands.Models
 
         public List<Brands> _Brands;
         public IEnumerable<Product> products { get; set; }
-
+       
+        public string ProductId { get; set; }
         public string BrandName { get; set; }
         public int QtyOnHand { get; set; }
         public int Id { get; set; }
         public int BrandId { get; set; }
-        public List<Brands> BrandList { get; set; }
+        //public List<Brands> BrandList { get; set; }
         public IEnumerable<SelectListItem> GetBrands()
         {
             return _Brands.Select(brand => new SelectListItem

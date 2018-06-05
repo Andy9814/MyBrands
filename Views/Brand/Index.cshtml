@@ -1,6 +1,7 @@
 ﻿@model BrandViewModel
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @*<div class="col-xs-2" style="top:100%;">&nbsp;</div>
     <div class="text-center col-xs-8" style="border:double;margin-top:15%;">*@
@@ -21,10 +22,10 @@
 
         </div>
         <div class="col-lg-4 col-lg-12">&nbsp;</div>
-
+       <catalogue brand="@Model.BrandId"></catalogue>
     </form>
 
-    @if (Context.Session.Get<ProductViewModel[]>("productSession") != null && Model.BrandId > 0)
+    @*@if (Context.Session.Get<ProductViewModel[]>("productSession") != null && Model.BrandId > 0)
     {
         <div class="col-xs-11 text-left" style="font-size:large;">
             <h3> Catalogue of Products</h3>
@@ -36,11 +37,11 @@
 
             if (item.BrandId == Model.BrandId)
             {
-                // remove double apostrophe
+                remove double apostrophe
                 item.Description = item.Description.Contains("''") ? item.Description.Replace("''", "") : item.Description;
                 item.JsonData = JsonConvert.SerializeObject(item);
                 var btn = "modalbtn" + item.Id;
-                <div class="col-sm-3 col-xs-12 text-center" style="border:solid;margin:2%; border-color:red;">
+                <div id="item" class="col-sm-3 col-xs-12 text-center" style="border:solid;margin:2%; border-color:red;">
                     <span class="col-xs-12"><img src="@item.GraphicName" style="height:150px; width: 120px; padding:10%;" /></span>
                     <p data-description="@item.Description">
                         <span style="font-size:large;">@item.ProductName</span>
@@ -57,7 +58,7 @@
 
             }
         }
-    }
+    }*@
 
 </div>
 
@@ -79,7 +80,7 @@
                                 <td class="col-xs-6 text-right">Qty:</td>
                                 <td class="col-xs-4 text-left">
                                     <input asp-for="QtyOnHand" type="number" maxlength="3" size="3" style="width: 50px;" id="qty" />
-                                    <input asp-for="Id" type="hidden" id="detailsId" />
+                                    <input asp-for="ProductId" type="hidden" id="detailsId" />
                                 </td>
                             </tr>
                             <tr><td colspan="2">&nbsp;</td></tr>

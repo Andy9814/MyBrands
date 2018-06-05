@@ -11,9 +11,10 @@ using System;
 namespace MyBrands.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180601075153_secondMigration")]
+    partial class secondMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -216,55 +217,6 @@ namespace MyBrands.Migrations
                     b.ToTable("Brands");
                 });
 
-            modelBuilder.Entity("MyBrands.Models.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<decimal>("OrderAmount")
-                        .HasColumnType("money");
-
-                    b.Property<DateTime>("OrderDate");
-
-                    b.Property<byte[]>("Timer");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(128);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("MyBrands.Models.OrderLineItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("OrderId");
-
-                    b.Property<string>("ProductId");
-
-                    b.Property<int>("QtyBackOrdered");
-
-                    b.Property<int>("QtyOrdered")
-                        .HasMaxLength(15);
-
-                    b.Property<int>("QtySold");
-
-                    b.Property<decimal>("SellingPrice")
-                        .HasColumnType("money");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderLineItems");
-                });
-
             modelBuilder.Entity("MyBrands.Models.Product", b =>
                 {
                     b.Property<string>("Id")
@@ -351,18 +303,6 @@ namespace MyBrands.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MyBrands.Models.OrderLineItem", b =>
-                {
-                    b.HasOne("MyBrands.Models.Order", "Order")
-                        .WithMany("OrderLineItems")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MyBrands.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("MyBrands.Models.Product", b =>

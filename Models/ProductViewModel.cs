@@ -10,7 +10,7 @@ namespace MyBrands.Models
         public string BrandName { get; set; }
         public int BrandId { get; set; }
         public IEnumerable<Product> Products { get; set; }
-        public int Id { get; set; }
+        public string  Id { get; set; }
         
         public string Description { get; set;}
         public string GraphicName { get; set; }
@@ -18,6 +18,7 @@ namespace MyBrands.Models
         public decimal MSRP { get; set; }
         public string ProductName { get; set; }
 
+        public int QtyOnBackOrder { get; set; }
 
         public string PRODUCT { get; set; }
         public string JsonData { get; set; }

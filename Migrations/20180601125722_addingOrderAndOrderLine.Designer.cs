@@ -11,9 +11,10 @@ using System;
 namespace MyBrands.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180601125722_addingOrderAndOrderLine")]
+    partial class addingOrderAndOrderLine
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -225,8 +226,6 @@ namespace MyBrands.Migrations
                         .HasColumnType("money");
 
                     b.Property<DateTime>("OrderDate");
-
-                    b.Property<byte[]>("Timer");
 
                     b.Property<string>("UserId")
                         .IsRequired()

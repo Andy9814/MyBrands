@@ -9,14 +9,14 @@
     </div>
     <div class="text-center" style="padding-top:10px;">
         @{
-            Dictionary<int, object> tray = Context.Session.Get<Dictionary<int, Object>>("tray");
-            
-           
+            Dictionary<int, object> tray = Context.Session.Get<Dictionary<int, Object>>(SessionVars.Tray);
+
+
             decimal orderTot = 0.0M;
             decimal subTot = 0;
             decimal tax = 0.13M;
             decimal Extended = 0;
-          
+
         }
         <table class="table table-striped" ">
             <tr style="font-weight:bolder; color:mediumvioletred;background-color:aqua;">
@@ -37,21 +37,21 @@
                         (Convert.ToString(tray[key]));
                         if (item.QtyOnHand > 0)
                         {
-                            
-                           
-                            Extended += item.CostPrice * item.QtyOnHand ;
+
+
+                            Extended += item.CostPrice * item.QtyOnHand;
                             subTot += Extended;
 
-            <tr>
-                <td class="col-xs-2 text-center">@item.ProductName</td>
-                <td class="col-xs-2 text-center">@item.QtyOnHand</td>
-                <td class="col-xs-10 text-left">@item.CostPrice</td>
-                <td class="col-xs-10 text-left">@item.MSRP</td>
-                <td class="col-xs-10 text-left" id="Ext">@Extended</td>
+                            <tr>
+                                <td class="col-xs-2 text-center">@item.ProductName</td>
+                                <td class="col-xs-2 text-center">@item.QtyOnHand</td>
+                                <td class="col-xs-10 text-left">@item.CostPrice</td>
+                                <td class="col-xs-10 text-left">@item.MSRP</td>
+                                <td class="col-xs-10 text-left" id="Ext">@Extended</td>
 
 
 
-            </tr>
+                            </tr>
                         }
                     }
 
@@ -66,22 +66,38 @@
             <tr>
                 <td class="col-xs-2 text-right">Sub-Total</td>
                 <td class="col-xs-4 text-left" id="sub">@subTot</td>
-              
-               
+
+
             </tr>
             <tr>
                 <td class="col-xs-2 text-right">Tax</td>
                 <td class="col-xs-4 text-left" id="tax">@tax</td>
-              
-               
+
+
             </tr>
             <tr>
                 <td class="col-xs-2 text-right">Order Total</td>
                 <td class="col-xs-4 text-left" id="orderTot">@orderTot</td>
-               
+
 
             </tr>
         </table>
+
+        <a href="/Tray/AddOrder" class="btn btn-sm btn-success">Add order</a>
         <a href="/Tray/ClearTray" class="btn btn-sm btn-success">Clear Tray</a>
+
+
+        @*<div class="text-center">
+        <form asp-controller="Tray" asp-action="AddOrder" method="post" role="form">
+            @if (Context.Session.GetString(SessionVars.User) != null)
+            {
+                <button type="submit" class="btn btn-sm btn-primary" id="modalbtn">Add Tray</button>
+            }
+            @*&nbsp;<a href="/Tray/ClearTray" class="btn btn-sm btn-success">Clear Tray</a>
+        </form>
+
+    </div>*@
+
+
     </div>
-</div>
+    </div>
