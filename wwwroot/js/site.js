@@ -24,8 +24,8 @@ $(function () {
         if ($(e.relatedTarget).text() === 'Demographic') { // tab 1
             $('#Firstname').valid()
             $('#Lastname').valid()
-            //$('Age').valid()
-            //$('CreditcardType').valid()
+            $('#Age').valid()
+            $('#CreditcardType').valid()
             if ($('#Firstname').valid() === false || $('#Lastname').valid() === false || $('#Age').valid() === false || $('#CreditcardType').valid() === false) {
                 return false; // suppress click
             }
@@ -33,6 +33,11 @@ $(function () {
         if ($(e.relatedTarget).text() === 'Address') { // tab 2
             $('#Address1').valid()
             $('#City').valid()
+            $('#Region').valid()
+            $('#Country').valid()
+            $('#Mailcode').valid()
+
+
             if ($('#Address1').valid() === false || $('#City').valid() === false || $('#Region').valid() === false || $('#Country').valid() === false || $('#Mailcode').valid() === false ) {
                 return false; // suppress click
             }
@@ -57,4 +62,8 @@ let CopyToModal = (id, data) => {
     $("#msrp").text("$" + data.MSRP.toFixed(2));
     $("#productname").text(data.ProductName);
     $("#detailsId").val(id);
+    $("#qtyOnHand").text(data.QtyOnHand);
+    $("#qtyOnBackOrder").text(data.QtyOnBackOrder);
+
 }
+

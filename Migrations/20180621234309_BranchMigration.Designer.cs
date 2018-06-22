@@ -11,8 +11,8 @@ using System;
 namespace MyBrands.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20180601125722_addingOrderAndOrderLine")]
-    partial class addingOrderAndOrderLine
+    [Migration("20180621234309_BranchMigration")]
+    partial class BranchMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -198,6 +198,31 @@ namespace MyBrands.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("MyBrands.Models.Branch", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("City")
+                        .HasMaxLength(150);
+
+                    b.Property<double?>("Distance");
+
+                    b.Property<double?>("Latitude");
+
+                    b.Property<double?>("Longitude");
+
+                    b.Property<string>("Region")
+                        .HasMaxLength(2);
+
+                    b.Property<string>("Street")
+                        .HasMaxLength(150);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Branches");
+                });
+
             modelBuilder.Entity("MyBrands.Models.Brands", b =>
                 {
                     b.Property<int>("Id")
@@ -226,6 +251,11 @@ namespace MyBrands.Migrations
                         .HasColumnType("money");
 
                     b.Property<DateTime>("OrderDate");
+
+                    b.Property<byte[]>("Timer")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("timestamp")
+                        .HasMaxLength(8);
 
                     b.Property<string>("UserId")
                         .IsRequired()

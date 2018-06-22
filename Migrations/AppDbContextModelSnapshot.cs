@@ -197,6 +197,31 @@ namespace MyBrands.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("MyBrands.Models.Branch", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("City")
+                        .HasMaxLength(150);
+
+                    b.Property<double?>("Distance");
+
+                    b.Property<double?>("Latitude");
+
+                    b.Property<double?>("Longitude");
+
+                    b.Property<string>("Region")
+                        .HasMaxLength(2);
+
+                    b.Property<string>("Street")
+                        .HasMaxLength(150);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Branches");
+                });
+
             modelBuilder.Entity("MyBrands.Models.Brands", b =>
                 {
                     b.Property<int>("Id")
@@ -226,7 +251,10 @@ namespace MyBrands.Migrations
 
                     b.Property<DateTime>("OrderDate");
 
-                    b.Property<byte[]>("Timer");
+                    b.Property<byte[]>("Timer")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("timestamp")
+                        .HasMaxLength(8);
 
                     b.Property<string>("UserId")
                         .IsRequired()

@@ -19,6 +19,9 @@ namespace MyBrands.Models
         [Required]
         [StringLength(128)]
         public string UserId { get; set; }
+        [Column(TypeName = "timestamp")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [MaxLength(8)]
         public byte[] Timer { get; set; }
         public virtual ICollection<OrderLineItem> OrderLineItems { get; set; }
     }

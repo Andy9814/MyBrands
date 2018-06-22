@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using MyBrands.Models;
 using Microsoft.AspNetCore.Http;
 using MyBrands.Utils;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyBrands.Controllers
 {
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public IActionResult Index()
         {
             if (HttpContext.Session.GetString(SessionVars.LoginStatus) == null)

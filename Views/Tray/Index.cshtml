@@ -20,6 +20,7 @@
         }
         <table class="table table-striped" ">
             <tr style="font-weight:bolder; color:mediumvioletred;background-color:aqua;">
+                <th class="col-xs-2 text-center">Code</th>
                 <th class="col-xs-2 text-center">Product Name</th>
                 <th class="col-xs-10 text-center">Qty</th>
                 <th class="col-xs-10 text-center">Cost Price</th>
@@ -39,10 +40,12 @@
                         {
 
 
-                            Extended += item.CostPrice * item.QtyOnHand;
+                            Extended += item.MSRP * item.QtyOnHand;
                             subTot += Extended;
 
+
                             <tr>
+                                <td class="col-xs-2 text-center">@item.Id</td>
                                 <td class="col-xs-2 text-center">@item.ProductName</td>
                                 <td class="col-xs-2 text-center">@item.QtyOnHand</td>
                                 <td class="col-xs-10 text-left">@item.CostPrice</td>
@@ -83,20 +86,21 @@
             </tr>
         </table>
 
-        <a href="/Tray/AddOrder" class="btn btn-sm btn-success">Add order</a>
+        <a href="/Tray/AddOrder"  class="btn btn-sm btn-primary" >Add order</a>
         <a href="/Tray/ClearTray" class="btn btn-sm btn-success">Clear Tray</a>
 
 
         @*<div class="text-center">
-        <form asp-controller="Tray" asp-action="AddOrder" method="post" role="form">
-            @if (Context.Session.GetString(SessionVars.User) != null)
-            {
-                <button type="submit" class="btn btn-sm btn-primary" id="modalbtn">Add Tray</button>
-            }
-            @*&nbsp;<a href="/Tray/ClearTray" class="btn btn-sm btn-success">Clear Tray</a>
-        </form>
+            <form asp-controller="Tray" asp-action="AddOrder" method="post" role="form">
+                @if (Context.Session.GetString(SessionVars.User) != null)
+                {
+                    <button type="submit" class="btn btn-sm btn-primary" id="modalbtn">Add order</button>
 
-    </div>*@
+                }
+                &nbsp;<a href="/Cart/ClearCart" class="btn btn-sm btn-success">Clear Cart</a>
+            </form>*@
+
+        </div>
 
 
     </div>

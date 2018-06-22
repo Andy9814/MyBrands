@@ -10,6 +10,7 @@ namespace MyBrands.Controllers
     public class TrayController : Controller
     {
         AppDbContext _db;
+        // TrayController
         public TrayController(AppDbContext context)
         {
             _db = context;
@@ -18,6 +19,8 @@ namespace MyBrands.Controllers
         {
             return View();
         }
+
+        // ClearTray
         public ActionResult ClearTray() // clear out current tray
         {
             HttpContext.Session.Remove(SessionVars.Tray);
@@ -26,6 +29,7 @@ namespace MyBrands.Controllers
         }
 
 
+        // AddOrder 
         public ActionResult AddOrder()
         {
             OrderModel model = new OrderModel(_db);
@@ -53,8 +57,37 @@ namespace MyBrands.Controllers
             HttpContext.Session.SetString(SessionVars.Message, retMessage);
             return Redirect("/Home");
         }
+
+
+        // List
+        public IActionResult List()
+        {
+            // they can't list Trays if they're not logged on
+            if (HttpContext.Session.GetString(SessionVars.User) == null)
+            {
+                return Redirect("/Login");
+            }
+            return View("List");
+        }
+
+        // Get order for the list
+        [Route("[action]")]
+        public IActionResult GetOrders()
+        {
+            OrderModel model = new OrderModel(_db);
+            return Ok(model.GetByUserId(HttpContext.Session.GetString(SessionVars.User)));
+        }
+
+
+        // get the orderDetails
+  
+        [Route("[action]/{tid:int}")]
+        public IActionResult GetOrderDetails(int tid)
+        {
+            OrderModel model = new OrderModel(_db);
+            return Ok(model.GetOrderDetails(tid, HttpContext.Session.GetString(SessionVars.User)));
+        }
     }
-
-
-
 }
+
+

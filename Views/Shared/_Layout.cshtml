@@ -36,17 +36,17 @@
 
             </span>
 
-            <ul class="nav navbar-nav">
-                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                @*<li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
-                <li><a asp-area="" asp-controller="Brand" asp-action="Index">Brands</a></li>
-                <li><a asp-area="" asp-controller="Register" asp-action="Index">Register</a></li>
-                <li><a asp-area="" asp-controller="Login" asp-action="Index">Login</a></li>
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-area="" asp-controller="Brand" asp-action="Index">Brands</a></li>
+                    <li><a asp-area="" asp-controller="Register" asp-action="Index">Register</a></li>
+                    <li><a asp-area="" asp-controller="Login" asp-action="Index">Login</a></li>
+                    <li><a asp-area="" asp-controller="Login" asp-action="Logoff">Logoff</a></li>
+                    <li><a asp-area="" asp-controller="Tray" asp-action="List">Orders</a></li>
+                    <li><a asp-area="" asp-controller="Branch" asp-action="Index">Branches</a></li>
 
-                <li><a asp-area="" asp-controller="Login" asp-action="Logoff">Logoff</a></li>
-
-            </ul>
+                </ul>
         </div>
     </div>
 </nav>
@@ -73,6 +73,9 @@
             crossorigin="anonymous"
             integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
     </script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
     <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
             asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
             asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
